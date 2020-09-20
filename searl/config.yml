@@ -1,0 +1,60 @@
+
+
+expt:
+  project_name:                 "searl"
+  session_name:                 "td3_experiment"
+  experiment_name:              "default_config"
+
+searl:
+  population_size:              20
+  tournament_size:              3
+  elitism:                      True
+  worker:                       5
+  seed:                         123
+
+  replay_memory_size:           1000000
+  num_frames:                   2000000
+
+  train_frames_fraction:        0.5 # min 5000 train_iternations
+
+  ind_memory:                   False
+  init_random:                  False
+
+  min_eval_steps:               250
+  test_episodes:                10
+
+mutation:
+  rl_hp_selection:              ['lr_actor','lr_critic_1','lr_critic_2']
+  new_layer_prob:               0.2
+  mutation_sd:                  0.1
+
+td3:
+  gamma:                        0.99
+  tau:                          0.005
+  batch_size:                   100
+  lr_actor:                     0.001
+  lr_critic_1:                  0.001
+  lr_critic_2:                  0.001
+  clip_grad_norm:               100
+  td3_policy_noise:             0.2
+  td3_noise_clip:               0.5
+  td3_update_freq:              2
+  start_timesteps:              1000
+  exploration_noise:            0.1
+
+env:
+  name:                        'HalfCheetah-v2'
+
+actor:
+  hidden_size:             [128]
+  activation:              'relu'
+  output_activation:       'tanh'
+  layer_norm:              True
+  output_vanish:           False
+
+critic:
+  hidden_size:             [128]
+  activation:              'relu'
+  output_activation:       'linear'
+  layer_norm:              True
+  output_vanish:           True
